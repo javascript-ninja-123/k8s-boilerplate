@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  labels:
+    component: client
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: client
+  template:
+    metadata:
+      labels:
+        component: client
+    spec:
+      containers:
+        - name: client
+          image: docker.apple.com/docker.apple.com/<yourDockerImageName>
+          ports:
+            - containerPort: 3000
+
+  

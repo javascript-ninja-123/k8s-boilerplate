@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-server
+  labels:
+    component: auth-server
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      component: auth-server
+  template:
+    metadata:
+      labels:
+        component: auth-server
+    spec:
+      containers:
+        - name: auth-server
+          image: docker.apple.com/<yourDockerImageName>
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7000
+          env:
+            - name: NODEENV
+              value: production
+            - name: JWTTOKENSECRET
+              value: dasg
+            - name: JWTREFRESHTOKENSECRET
+              value: adsg
+            - name: SALT
+              value: "123"
+
+  
+
+
+
+

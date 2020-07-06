@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audio-server
+  labels:
+    component: audio-server
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      component: audio-server
+  template:
+    metadata:
+      labels:
+        component: audio-server
+    spec:
+      containers:
+        - name: audio-server
+          image: docker.apple.com/docker.apple.com/<yourDockerImageName>
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6000
+
+
+  
+
+
+
+
